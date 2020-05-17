@@ -1,6 +1,6 @@
 const searchDbForLetter = letter =>
   new Promise(resolve => {
-     // how slow do you want the db simulation to be?
+    // how slow do you want the db simulation to be?
     setTimeout(() => resolve(letter), 300);
   });
 

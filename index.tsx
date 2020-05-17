@@ -1,13 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
-import {AutocompleteTrivialMistake} from "./AutocompleteTrivialMistake";
-import {AutocompleteTrivialSolution} from "./AutocompleteTrivialSolution";
-import {AutocompleteCompleteSolution} from "./AutocompleteCompleteSolution";
+import { AutocompleteTrivialMistake } from "./AutocompleteTrivialMistake";
+import { AutocompleteTrivialSolution } from "./AutocompleteTrivialSolution";
+import { AutocompleteCompleteSolution } from "./AutocompleteCompleteSolution";
 import "./style.css";
 
-interface AppProps {
-
-}
+interface AppProps {}
 export const App: React.FC = () => {
   return (
     <div>

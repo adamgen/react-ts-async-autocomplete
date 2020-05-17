@@ -23,7 +23,7 @@ export const AutocompleteCompleteSolution: React.FC = () => {
     setApiClient(client);
   }, []);
 
-  const handleChange = async (e) => {
+  const handleChange = async e => {
     if (!apiClient) {
       return;
     }

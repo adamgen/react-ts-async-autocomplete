@@ -9,7 +9,7 @@ export const AutocompleteTrivialSolution: React.FC = () => {
     promise = api(e.target.value);
     const localPromise = promise;
     promise.then(result => {
-      if(promise === localPromise){
+      if (promise === localPromise) {
         setApiResult(result);
       }
     });
