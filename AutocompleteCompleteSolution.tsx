@@ -8,6 +8,9 @@ export const AutocompleteCompleteSolution: React.FC = () => {
   const promiseStore = useMemo<{latestPromise: null | Promise<any>}>(() => ({latestPromise: null }), []);
 
   const handleChange = async e => {
+    if(promiseStore.latestPromise) {
+      // cancel the HTTP request here...
+    }
     const localPromise = api(e.target.value).then((result) => {
       // Just like in the example above, we'll compare the localPromise with the latestPromise. If they're the same we'll udpate the state.
       if(localPromise === promiseStore.latestPromise){
