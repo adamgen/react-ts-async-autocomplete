@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { api } from "./api";
 
 // We will use this promise variable to store the latest promise outside of the component's bracket scope. This way we can acess it through out all of the change events that the user triggers.
