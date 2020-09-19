@@ -1,34 +1,20 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { api } from "./api";
-
-export class Api {
-  promise;
-  async request(text) {
-    this.promise = api(text);
-    const localPromise = this.promise;
-    const result = await this.promise;
-
-    if (this.promise === localPromise) {
-      return result;
-    }
-  }
-}
 
 export const AutocompleteCompleteSolution: React.FC = () => {
   const [apiResult, setApiResult] = useState("");
-  const [apiClient, setApiClient] = useState();
 
-  useEffect(() => {
-    const client = new Api();
-    setApiClient(client);
-  }, []);
+  // Use memo will return the same object reference across all of the components renders. Meaning we have a consistent referense for all change events and component renders.
+  const promiseStore = useMemo<{latestPromise: null | Promise<any>}>(() => ({latestPromise: null }), []);
 
   const handleChange = async e => {
-    if (!apiClient) {
-      return;
-    }
-    const result = await apiClient.request(e.target.value);
-    setApiResult(result);
+    const localPromise = api(e.target.value).then((result) => {
+      // Just like in the example above, we'll compare the localPromise with the latestPromise. If they're the same we'll udpate the state.
+      if(localPromise === promiseStore.latestPromise){
+        setApiResult(result);
+      }
+    });
+    promiseStore.latestPromise = localPromise;
   };
 
   return (
